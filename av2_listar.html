@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Title</title>
+
+<script>
+
+function buscarClientes() 
+{
+	let xmlHttp = new XMLHttpRequest();
+	xmlHttp.onreadystatechange = function() 
+	{
+		if (this.readyState == 4 && this.status == 200) 
+		{
+			console.log("Chegou resposta: " + this.responseText);
+			
+			document.getElementById("msg").innerHTML = this.responseText;
+			
+			let objReturnJSON = JSON.parse(this.responseText);
+			
+			for (i=0; i < objReturnJSON.length; i++) 
+			{
+				let linha = objReturnJSON[i];
+				
+				criarLinhaTabela(objReturnJSON[i]);
+			}
+		}
+	}
+	xmlHttp.open("GET","http://localhost/3daw/av2_listar.php");
+	xmlHttp.send();
+	console.log("Enviei requisição");
+}
+function criarLinhaTabela(pobjReturnJSON) 
+{
+	let tr = document.createElement("tr");
+	
+	let td = document.createElement("td");
+	
+	//nome
+	let textnode = document.createTextNode(pobjReturnJSON.nome);
+	td.appendChild(textnode);
+	tr.appendChild(td);
+	
+	//endereco
+	textnode = document.createTextNode(pobjReturnJSON.endereco);
+	td.appendChild(textnode);
+	tr.appendChild(td);
+	
+	//postalCode
+	textnode = document.createTextNode(pobjReturnJSON.postalCode);
+	td.appendChild(textnode);
+	tr.appendChild(td);
+	
+	//pais
+	textnode = document.createTextNode(pobjReturnJSON.pais);
+	td.appendChild(textnode);
+	tr.appendChild(td);
+	
+	//cpf
+	textnode = document.createTextNode(pobjReturnJSON.cpf);
+	td.appendChild(textnode);
+	tr.appendChild(td);
+	
+	//passaporte
+	textnode = document.createTextNode(pobjReturnJSON.passaporte);
+	td.appendChild(textnode);
+	tr.appendChild(td);
+	
+	//email
+	textnode = document.createTextNode(pobjReturnJSON.email);
+	td.appendChild(textnode);
+	tr.appendChild(td);
+	
+	//dataNascimento
+	textnode = document.createTextNode(pobjReturnJSON.dataNascimento);
+	td.appendChild(textnode);
+	tr.appendChild(td);
+
+	var tr_fim = document.getElementById("ultimaLinha");
+	
+	tr_fim.parentNode.insertBefore(tr, tr_fim);
+}
+</script>
+
+</head>
+
+<body>
+
+<input type="button" value="Listar" onclick="buscarClientes()">
+
+<p id="msg"></p>
+
+<div id="lista"></div>
+
+<table id="lst">
+    <tr id="ultimaLinha">
+        <td colspan="4"></td>
+    </tr>
+</table>
+
+</body>
+</html>
