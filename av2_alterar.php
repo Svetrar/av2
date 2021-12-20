@@ -29,9 +29,7 @@
 	$comandoSQL = "SELECT `nome`, `endereco`, `postalCode`, `pais`, `cpf`, `passaporte`, `email`, `dataNascimento` FROM `av2_clientes` WHERE nome = '$nome'";
 	
     $result = $conn->query($comandoSQL);
-    $clienteJSON = json_encode($result->fetch_assoc(), JSON_UNESCAPED_UNICODE);					
-	
-	
+    $clienteJSON = json_encode($result->fetch_assoc(), JSON_UNESCAPED_UNICODE);
 
     echo $clienteJSON;
 ?>
