@@ -20,9 +20,6 @@
         die("Erro de conexão");
     }
 	
-	$comandoSQL = "INSERT INTO `av2_clientes`(`nome`, `endereco`, `postalCode`, `pais`, `cpf`, 
-					`passaporte`, `email`, `dataNascimento`) VALUES ('$nome',$endereco,'$postalCode','$pais'
-					,'$cpf','$passaporte','$email','$dataNascimento')";
     $result = $conn->query($comandoSQL);
 	
 	$comandoSQL = "SELECT `nome`, `endereco`, `postalCode`, `pais`, `cpf`, `passaporte`, 
