@@ -21,7 +21,7 @@
     }
 	
 	$comandoSQL = "UPDATE `av2_clientes` SET `nome`='$nome',`endereco`='$endereco',`postalCode`='$postalCode',`pais`='$pais',
-					`cpf`='$cpf',`passaporte`='$passaporte',`email`='$email',`dataNascimento`='$dataNascimento' WHERE VALUES ('',$endereco,'$postalCode','$pais'
+					`cpf`='$cpf',`passaporte`='$passaporte',`email`='$email',`dataNascimento`='$dataNascimento' WHERE VALUES ('$nome',$endereco,'$postalCode','$pais'
 					,'$cpf','$passaporte','$email','$dataNascimento')"; 
     $result = $conn->query($comandoSQL);
 	
