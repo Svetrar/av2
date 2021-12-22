@@ -20,10 +20,9 @@
         die("Erro de conexão");
     }
 	
-	$comandoSQL = "UPDATE `av2_clientes` SET SET `nome`='[$nome-1]',`endereco`='[value-2]',`postalCode`='[value-3]',`pais`='[value-4]',
-					`cpf`='[value-5]',`passaporte`='[value-6]',`email`='[value-7]',`dataNascimento`='[value-8]' WHERE 1 VALUES ('',$endereco,'$postalCode','$pais'
-					,'$cpf','$passaporte','$email','$dataNascimento')";
-					 `av2_clientes` 
+	$comandoSQL = "UPDATE `av2_clientes` SET `nome`='$nome',`endereco`='$endereco',`postalCode`='$postalCode',`pais`='$pais',
+					`cpf`='$cpf',`passaporte`='$passaporte',`email`='$email',`dataNascimento`='$dataNascimento' WHERE VALUES ('',$endereco,'$postalCode','$pais'
+					,'$cpf','$passaporte','$email','$dataNascimento')"; 
     $result = $conn->query($comandoSQL);
 	
 	$comandoSQL = "SELECT `nome`, `endereco`, `postalCode`, `pais`, `cpf`, `passaporte`, `email`, `dataNascimento` FROM `av2_clientes` WHERE nome = '$nome'";
